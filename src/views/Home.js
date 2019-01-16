@@ -2,14 +2,9 @@ import React, { Component } from "react";
 import Firebase from "../config/Firebase";
 import Store from "../config/Store";
 import NoteCell from "./home_comp/NoteCell";
-import {
-  Container,
-  Navbar,
-  NavbarBrand,
-  NavLink,
-  Nav,
-  NavItem
-} from "reactstrap";
+import "./Home.css";
+import { Navbar, NavbarBrand, NavLink, Nav, NavItem } from "reactstrap";
+import { HashRouter, Route } from "react-router-dom";
 
 class Home extends Component {
   constructor(props) {
@@ -21,7 +16,8 @@ class Home extends Component {
       .child("notes");
 
     this.state = {
-      notes: []
+      notes: [],
+      currentNote: {}
     };
 
     this.newUser = Firebase.database()
@@ -52,6 +48,10 @@ class Home extends Component {
       });
   };
 
+  looking = note => {
+    console.log("note", note);
+  };
+
   render() {
     return (
       <div>
@@ -64,46 +64,48 @@ class Home extends Component {
           }}
           expand="md"
         >
-          <Container>
-            <NavbarBrand>
-              <img
-                src={require("../icons/memo.png")}
-                style={{
-                  width: "25px",
-                  height: "25px",
-                  marginRight: "5px",
-                  borderRadius: "5px"
-                }}
-                alt="memo"
-              />
-              <strong className="white-text">Memo</strong>
-            </NavbarBrand>
+          <NavbarBrand>
+            <img
+              src={require("../icons/memo.png")}
+              style={{
+                width: "25px",
+                height: "25px",
+                marginRight: "5px",
+                borderRadius: "5px"
+              }}
+              alt="memo"
+            />
+            <strong className="white-text">Memo</strong>
+          </NavbarBrand>
 
-            <Nav className="ml-auto" navbar>
-              <NavItem>
-                <NavLink href="/" style={{ color: "#ffffff" }}>
-                  Settings
-                </NavLink>
-              </NavItem>
+          <Nav className="ml-auto" navbar>
+            <NavItem>
+              <NavLink href="/" style={{ color: "#ffffff" }}>
+                Settings
+              </NavLink>
+            </NavItem>
 
-              <NavItem>
-                <NavLink
-                  href="/"
-                  style={{ color: "#ffffff" }}
-                  onClick={this.logout}
-                >
-                  Logout
-                </NavLink>
-              </NavItem>
-            </Nav>
-          </Container>
+            <NavItem>
+              <NavLink
+                href="/"
+                style={{ color: "#ffffff" }}
+                onClick={this.logout}
+              >
+                Logout
+              </NavLink>
+            </NavItem>
+          </Nav>
         </Navbar>
 
-        <Container>
+        <div className="sidenav">
           {this.state.notes.map(note => (
-            <NoteCell note={note} key={note.noteId} />
+            <NoteCell note={note} key={note.noteId} onClick={this.looking} />
           ))}
-        </Container>
+        </div>
+
+        <div className="main">
+          <h2>test</h2>
+        </div>
       </div>
     );
   }

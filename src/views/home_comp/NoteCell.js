@@ -8,12 +8,20 @@ class NoteCell extends Component {
     super(props);
   }
 
+  displaySampleTitle = text => {
+    if (text.length >= 25) {
+      return text.substring(0, 25) + "...";
+    } else {
+      return text;
+    }
+  };
+
   render() {
     return (
       <Container style={{ float: "left" }}>
-        <div className="noteContainer working">
+        <div className="noteContainer">
           <h5>{this.props.note.title}</h5>
-          <p>{this.props.note.sampleTitle}</p>
+          <p>{this.displaySampleTitle(this.props.note.sampleTitle)}</p>
         </div>
       </Container>
     );
