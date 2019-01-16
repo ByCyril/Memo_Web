@@ -33,7 +33,11 @@ class App extends Component {
   }
 
   render() {
-    return <div>{this.state.isLoggedIn === false ? <Login /> : <Home />}</div>;
+    return (
+      <div className="App">
+        {this.state.isLoggedIn === false ? <Login /> : <Home />}
+      </div>
+    );
   }
 }
 

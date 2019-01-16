@@ -9,7 +9,9 @@ import {
   InputGroup,
   Input,
   InputGroupAddon,
-  Container
+  Container,
+  Navbar,
+  NavbarBrand
 } from "reactstrap";
 
 class Login extends Component {
@@ -44,43 +46,56 @@ class Login extends Component {
   };
   render() {
     return (
-      <Container>
-        <h1>Memo</h1>
-        <Jumbotron>
-          <Form>
-            <FormGroup>
-              <InputGroup>
-                <InputGroupAddon addonType="prepend">E</InputGroupAddon>
-                <Input
-                  placeholder="Email"
-                  name="email"
-                  onChange={this.getInfo}
-                />
-              </InputGroup>
-            </FormGroup>
-            <FormGroup>
-              <InputGroup>
-                <InputGroupAddon addonType="prepend">P</InputGroupAddon>
-                <Input
-                  placeholder="Password"
-                  name="password"
-                  type="password"
-                  onChange={this.getInfo}
-                />
-              </InputGroup>
-            </FormGroup>
-            <FormGroup>
-              <Button color="info" onClick={this.userLogin}>
-                Login
-              </Button>{" "}
-              <Button color="info">Create Account</Button>{" "}
-              <Button color="danger" onClick={this.getCurrentState}>
-                Get state
-              </Button>
-            </FormGroup>
-          </Form>
-        </Jumbotron>
-      </Container>
+      <div>
+        <Navbar
+          sticky={"top"}
+          style={{
+            marginBottom: "15px",
+            backgroundColor: "#00B7D2",
+            color: "#ffffff"
+          }}
+        >
+          <Container>
+            <NavbarBrand>
+              <strong className="white-text">Memo</strong>
+            </NavbarBrand>
+          </Container>
+        </Navbar>
+
+        <Container>
+          <Jumbotron>
+            <Form>
+              <FormGroup>
+                <InputGroup>
+                  <InputGroupAddon addonType="prepend">E</InputGroupAddon>
+                  <Input
+                    placeholder="Email"
+                    name="email"
+                    onChange={this.getInfo}
+                  />
+                </InputGroup>
+              </FormGroup>
+              <FormGroup>
+                <InputGroup>
+                  <InputGroupAddon addonType="prepend">P</InputGroupAddon>
+                  <Input
+                    placeholder="Password"
+                    name="password"
+                    type="password"
+                    onChange={this.getInfo}
+                  />
+                </InputGroup>
+              </FormGroup>
+              <FormGroup>
+                <Button color="info" onClick={this.userLogin}>
+                  Login
+                </Button>{" "}
+                <Button color="info">Create Account</Button>{" "}
+              </FormGroup>
+            </Form>
+          </Jumbotron>
+        </Container>
+      </div>
     );
   }
 }
