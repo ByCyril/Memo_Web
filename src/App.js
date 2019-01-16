@@ -28,6 +28,7 @@ class App extends Component {
         const newState = { CURRENT_USER: user, isLoggedIn: true, test: "hi" };
         Store.dispatch({ type: "login", payload: newState });
         this.setState(Store.getState());
+      } else {
       }
     });
   }

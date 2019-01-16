@@ -14,7 +14,7 @@ import {
 class Home extends Component {
   constructor(props) {
     super(props);
-
+    console.log("Home", Store.getState().CURRENT_USER.uid);
     this.db = Firebase.database()
       .ref()
       .child("XAioqb8FNuW9OF4eQm6yAs1ugw83")
@@ -24,18 +24,17 @@ class Home extends Component {
       notes: []
     };
 
-    // this.db.on("child_added", snap => {
-    //   console.log(snap.val());
-    // });
+    this.newUser = Firebase.database()
+      .ref()
+      .child(Store.getState().CURRENT_USER.uid)
+      .child("notes");
   }
 
   componentWillMount() {
     const currentNotes = this.state.notes;
 
     this.db.on("child_added", snap => {
-      console.log(snap.val());
       currentNotes.push(snap.val());
-
       this.setState({
         notes: currentNotes
       });
@@ -72,7 +71,21 @@ class Home extends Component {
 
             <Nav className="ml-auto" navbar>
               <NavItem>
-                <NavLink href="/" onClick={this.logout}>
+                <NavLink
+                  href="/"
+                  style={{ color: "#ffffff" }}
+                  onClick={this.logout}
+                >
+                  Settings
+                </NavLink>
+              </NavItem>
+
+              <NavItem>
+                <NavLink
+                  href="/"
+                  style={{ color: "#ffffff" }}
+                  onClick={this.logout}
+                >
                   Logout
                 </NavLink>
               </NavItem>

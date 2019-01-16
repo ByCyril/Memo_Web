@@ -41,6 +41,13 @@ class Login extends Component {
     }
   };
 
+  didReturn = e => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      this.userLogin();
+    }
+  };
+
   getCurrentState = () => {
     console.log(Store.getState());
   };
@@ -72,6 +79,7 @@ class Login extends Component {
                     placeholder="Email"
                     name="email"
                     onChange={this.getInfo}
+                    onKeyPress={this.didReturn}
                   />
                 </InputGroup>
               </FormGroup>
@@ -83,6 +91,7 @@ class Login extends Component {
                     name="password"
                     type="password"
                     onChange={this.getInfo}
+                    onKeyPress={this.didReturn}
                   />
                 </InputGroup>
               </FormGroup>
