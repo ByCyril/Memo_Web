@@ -9,12 +9,10 @@ class NoteCell extends Component {
   render() {
     return (
       <Container>
-        {/* <Jumbotron> */}
         <div className="noteContainer" onClick={this.viewNote}>
           <h5>{this.props.note.title}</h5>
           <p>{this.props.note.sampleTitle}</p>
         </div>
-        {/* </Jumbotron> */}
       </Container>
     );
   }

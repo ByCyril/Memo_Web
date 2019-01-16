@@ -66,16 +66,21 @@ class Home extends Component {
         >
           <Container>
             <NavbarBrand>
+              <img
+                src={require("../icons/memo.png")}
+                style={{
+                  width: "25px",
+                  height: "25px",
+                  marginRight: "5px",
+                  borderRadius: "5px"
+                }}
+              />
               <strong className="white-text">Memo</strong>
             </NavbarBrand>
 
             <Nav className="ml-auto" navbar>
               <NavItem>
-                <NavLink
-                  href="/"
-                  style={{ color: "#ffffff" }}
-                  onClick={this.logout}
-                >
+                <NavLink href="/" style={{ color: "#ffffff" }}>
                   Settings
                 </NavLink>
               </NavItem>
