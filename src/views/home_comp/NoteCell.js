@@ -11,7 +11,7 @@ class NoteCell extends Component {
   render() {
     return (
       <Container style={{ float: "left" }}>
-        <div className="noteContainer">
+        <div className="noteContainer test">
           <h5>{this.props.note.title}</h5>
           <p>{this.props.note.sampleTitle}</p>
         </div>
