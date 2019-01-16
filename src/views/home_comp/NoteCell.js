@@ -1,15 +1,17 @@
 import React, { Component } from "react";
-import { Container, Row, Jumbotron } from "reactstrap";
+import { Container } from "reactstrap";
 import "./NoteCell.css";
+import Thread from "../thread_comp/Thread";
+
 class NoteCell extends Component {
-  viewNote = () => {
-    console.log("working", this.props.note.title);
-  };
+  constructor(props) {
+    super(props);
+  }
 
   render() {
     return (
-      <Container>
-        <div className="noteContainer" onClick={this.viewNote}>
+      <Container style={{ float: "left" }}>
+        <div className="noteContainer">
           <h5>{this.props.note.title}</h5>
           <p>{this.props.note.sampleTitle}</p>
         </div>

@@ -4,7 +4,6 @@ import Login from "./views/Login";
 import Home from "./views/Home";
 import Firebase from "./config/Firebase";
 import Store from "./config/Store";
-import { throws } from "assert";
 
 class App extends Component {
   constructor(props) {

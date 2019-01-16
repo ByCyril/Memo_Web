@@ -74,6 +74,7 @@ class Home extends Component {
                   marginRight: "5px",
                   borderRadius: "5px"
                 }}
+                alt="memo"
               />
               <strong className="white-text">Memo</strong>
             </NavbarBrand>
