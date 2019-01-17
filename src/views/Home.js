@@ -17,13 +17,19 @@ class Home extends Component {
 
     this.state = {
       notes: [],
-      currentNote: {}
+      currentNote: ""
     };
 
     this.newUser = Firebase.database()
       .ref()
       .child(Store.getState().CURRENT_USER.uid)
       .child("notes");
+  }
+
+  componentWillUpdate() {
+    Store.subscribe(() => {
+      this.setState({ currentNote: Store.getState().currentNoteTitle });
+    });
   }
 
   componentWillMount() {
@@ -104,7 +110,7 @@ class Home extends Component {
         </div>
 
         <div className="main">
-          <h2>test</h2>
+          <h2>{this.state.currentNote}</h2>
         </div>
       </div>
     );

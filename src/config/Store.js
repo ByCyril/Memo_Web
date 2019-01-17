@@ -2,7 +2,8 @@ import { createStore } from "redux";
 
 const initialState = {
   CURRENT_USER: {},
-  isLoggedIn: false
+  isLoggedIn: false,
+  currentNoteTitle: ""
 };
 
 const reducer = function(state = initialState, action) {
@@ -13,6 +14,8 @@ const reducer = function(state = initialState, action) {
   } else if (action.type === "logout") {
     state = action.payload;
     console.log("logged out");
+  } else if (action.type === "getTitle") {
+    state.currentNoteTitle = action.payload;
   }
 
   return state;
