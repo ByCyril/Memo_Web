@@ -4,7 +4,7 @@ import Store from "../config/Store";
 import NoteCell from "./home_comp/NoteCell";
 import "./Home.css";
 import { Navbar, NavbarBrand, NavLink, Nav, NavItem } from "reactstrap";
-import { HashRouter, Route } from "react-router-dom";
+import Thread from "../views/thread_comp/Thread";
 
 class Home extends Component {
   constructor(props) {
@@ -17,18 +17,13 @@ class Home extends Component {
 
     this.state = {
       notes: [],
-      currentNote: ""
+      currentNote: {}
     };
-
-    this.newUser = Firebase.database()
-      .ref()
-      .child(Store.getState().CURRENT_USER.uid)
-      .child("notes");
   }
 
   componentWillUpdate() {
     Store.subscribe(() => {
-      this.setState({ currentNote: Store.getState().currentNoteTitle });
+      this.setState({ currentNote: Store.getState().currentNote });
     });
   }
 
@@ -110,7 +105,7 @@ class Home extends Component {
         </div>
 
         <div className="main">
-          <h2>{this.state.currentNote}</h2>
+          <Thread note={this.state.currentNote} />
         </div>
       </div>
     );

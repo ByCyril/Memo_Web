@@ -16,14 +16,14 @@ class NoteCell extends Component {
     }
   };
 
-  getTitle = () => {
-    Store.dispatch({ type: "getTitle", payload: this.props.note.title });
+  getNote = () => {
+    Store.dispatch({ type: "getTitle", payload: this.props.note });
   };
 
   render() {
     return (
       <Container style={{ float: "left" }}>
-        <div className="noteContainer" onClick={this.getTitle}>
+        <div className="noteContainer" onClick={this.getNote}>
           <h5>{this.props.note.title}</h5>
           <p>{this.displaySampleTitle(this.props.note.sampleTitle)}</p>
         </div>
